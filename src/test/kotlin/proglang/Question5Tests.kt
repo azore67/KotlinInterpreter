@@ -1,6 +1,6 @@
 package proglang
 
-/*
+
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.fail
@@ -398,4 +398,4 @@ class Question5Tests {
         ),
     )
 }
-*/
+

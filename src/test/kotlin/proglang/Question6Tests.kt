@@ -1,6 +1,6 @@
 package proglang
 
-/*
+
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -202,4 +202,4 @@ class Question6Tests {
         ),
     )
 }
-*/
+

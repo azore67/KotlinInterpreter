@@ -1,6 +1,6 @@
 package proglang
 
-interface IntExpr {
+sealed interface IntExpr {
     class Add(val lhs: IntExpr, val rhs: IntExpr) : IntExpr{
         override fun toString(): String {
             return "$lhs + $rhs"
@@ -59,16 +59,18 @@ fun IntExpr.eval(store: Map<String, Int>): Int = when (this) {
     } else {
         lhs.eval(store) / rhs.eval(store)
     }
-    is IntExpr.Fact -> fact(expr.eval(store))
+    is IntExpr.Fact ->
+    { fun fact(n: Int): Int {
+        if (n<0) {
+            throw UndefinedBehaviourException("result is negative")
+        }
+        else {
+            if (n<=1) return 1
+        }
+        return n* fact(n-1)
+    }
+        fact(expr.eval(store)) }
+
     is IntExpr.Paren -> expr.eval(store)
-    else -> throw UnsupportedOperationException("The above should account for all kinds of IntExpr.")
-}
-fun fact(n: Int): Int {
-    if (n<0) {
-        throw UndefinedBehaviourException("result is negative")
-    }
-    else {
-        if (n<=1) return 1
-    }
-    return n* fact(n-1)
+
 }
