@@ -10,7 +10,7 @@ class ProgramExecutor(val threadBody: Stmt, val pauseValue: Long, val store: Mut
         while (cur != null) {
             Thread.sleep(pauseValue)
             lock.withLock{
-                println(Thread().id)
+                println(Thread())
                 println(store)
                 cur = cur!!.step(store)
             }

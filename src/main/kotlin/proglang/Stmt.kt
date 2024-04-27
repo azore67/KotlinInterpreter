@@ -33,9 +33,6 @@ interface Stmt{
         override fun clone(): Stmt {
             return Assign(varName,expr,next?.clone())
         }
-
-
-
     }
 
 
